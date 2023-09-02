@@ -10,7 +10,7 @@ create table Direcciones(
 	ID_Direccion int primary key identity(1, 1),
     Linea1 varchar(100),
 	CodigoPostal int,
-	Pais varchar(10),
+	Pais varchar(50),
 	ID_Distrito int not null
 );
 
@@ -63,7 +63,7 @@ create table Proveedores(
 
 create table Categoria (
     ID_Categoria int primary key identity(1, 1),
-    NombreCategoria varchar(50) not null,
+    NombreCategoria varchar(100) not null,
     DescripcionCategoria varchar(200)
 );
 
@@ -71,7 +71,7 @@ create table Productos (
     ID_Producto int primary key identity(1, 1),
     NombreProducto varchar(100) not null,
     PrecioUnitario decimal(10, 2) not null,
-    CantidadInventario int not null,
+    Stock int not null,
     ID_Categoria int not null,
 	ID_Inventario int not  null,
 );
@@ -112,7 +112,7 @@ create table Envios(
 create table Pedidos(
 	ID_Pedido int primary key identity(1,1),
 	FechaPedido datetime not null, 
-	EstadoPedido varchar not null,
+	EstadoPedido varchar(10) not null,
 	ID_Cliente int not null
 );
 create table DetallePedido(
@@ -133,14 +133,19 @@ alter table Empleados add foreign key (ID_Direccion) references Direcciones(ID_D
 alter table Clientes add foreign key (ID_Direccion) references Direcciones(ID_Direccion);
 alter table Proveedores add foreign key (ID_Direccion) references Direcciones(ID_Direccion);
 alter table Productos add foreign key (ID_Categoria) references Categoria(ID_Categoria);
+
 alter table Facturas add foreign key (ID_DetalleFactura) references DetalleFacturas(ID_DetalleFactura);
 alter table Facturas add foreign key (ID_Cliente) references Clientes(ID_Cliente);
 alter table Facturas add foreign key (ID_Empleado) references Empleados(ID_Empleado);
+
 alter table Inventarios add foreign key (ID_Producto) references Productos(ID_Producto);
+
 alter table Envios add foreign key (ID_Pedido) references Pedidos(ID_Pedido);
 alter table Envios add foreign key (ID_Direccion) references Direcciones(ID_Direccion);
 alter table Pedidos add foreign key (ID_Cliente) references Clientes(ID_Cliente);
+
 alter table DetallePedido add foreign key (ID_Pedido) references Pedidos(ID_Pedido);
+
 alter table DetallePedido add foreign key (ID_Producto) references Productos(ID_Producto);
 
 
