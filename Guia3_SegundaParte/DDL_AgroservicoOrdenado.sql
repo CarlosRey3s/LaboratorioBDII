@@ -36,7 +36,7 @@ CREATE TABLE Empleados (
     Telefono VARCHAR(10) NOT NULL,
     Correo VARCHAR(100),
     DUI VARCHAR(60) NOT NULL,
-    ISSS VARCHAR(15) NOT NULL,
+    ISSS FLOAT NOT NULL,
     ID_Direccion INT NOT NULL,
     FOREIGN KEY (ID_Direccion) REFERENCES Direcciones (ID_Direccion)
 );

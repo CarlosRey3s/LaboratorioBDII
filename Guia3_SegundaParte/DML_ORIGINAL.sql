@@ -375,12 +375,12 @@ VALUES
 	-- Inserciones en la tabla Empleados
 INSERT INTO Empleados (NombresEmpleado, ApellidosEmpleado, FechaNac, Telefono, Correo, DUI, ISSS, ID_Direccion)
 VALUES 
-    ('Juan Carlos', 'Pérez Gómez', '1990-05-15', '7771234567', 'juan@gmail.com', '1234789-2', 'ISSS12345', 1),
-    ('María José', 'Rodríguez López', '1985-09-23', '5559876543', 'maria.rodriguez@gmail.com', '04598764-3', 'ISSS543210', 2),
-    ('Roberto', 'Martínez García', '2001-11-10', '3331112222', 'roberto.martinez@gmail.com', '055111-3', 'ISSS678901', 3),
-    ('Ana', 'López Pérez', '1978-03-06', '4442223333', 'ana.lopez@gmail.com', '07522233-3', 'ISSS135791', 4),
-    ('Luisa', 'Sánchez Rodríguez', '1995-07-19', '6663339999', 'luisa.sanchez@gmail.com', '06533399-2', 'ISSS246802', 5),
-	('Julia', 'Sánchez Estrada', '1995-08-15', '6643339999', 'julia.sanchez@gmail.com', '06673399-2', 'ISSS426802', 5);
+    ('Juan Carlos', 'Pérez Gómez', '1990-05-15', '7771234567', 'juan@gmail.com', '1234789-2', 20230102030405, 1),
+    ('María José', 'Rodríguez López', '1985-09-23', '5559876543', 'maria.rodriguez@gmail.com', '04598764-3', 20221231040506, 2),
+    ('Roberto', 'Martínez García', '2001-11-10', '3331112222', 'roberto.martinez@gmail.com', '055111-3', 20211130050607, 3),
+    ('Ana', 'López Pérez', '1978-03-06', '4442223333', 'ana.lopez@gmail.com', '07522233-3', 20201029060708, 4),
+    ('Luisa', 'Sánchez Rodríguez', '1995-07-19', '6663339999', 'luisa.sanchez@gmail.com', '06533399-2', 20190928070809, 5),
+	('Julia', 'Sánchez Estrada', '1995-08-15', '6643339999', 'julia.sanchez@gmail.com', '06673399-2', 20180827080910, 5);
 	
 	select * from Empleados;
 	
