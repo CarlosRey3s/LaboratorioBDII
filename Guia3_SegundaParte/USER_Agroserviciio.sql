@@ -64,7 +64,7 @@ GRANT VIEW DEFINITION TO Administrador;
 
 /* OTORGANDO PERDMISOS AL ROL DE VENDEDOR*/
 -- Para acceder a información sobre los clientes a los que atiende.
-GRANT SELECT ON Clientes TO Vendedor;
+GRANT SELECT ON Clientes TO vendedoruser;
 
 -- Para ver detalles sobre los productos disponibles y sus precios.
 GRANT SELECT ON Productos TO Vendedor;
@@ -159,3 +159,26 @@ GRANT INSERT ON Direcciones TO RecursosHumanos;
 GRANT UPDATE ON Empleados TO RecursosHumanos;
 -- Para eliminar registros de empleados en la tabla Empleados.
 GRANT DELETE ON Empleados TO RecursosHumanos;
+
+USE master;
+DROP LOGIN vendedor;
+
+select name from sys.server_principals
+where type_desc = 'SQL_LOGIN';
+
+select name from sys.database_principals
+where type_desc = 'SQL_USER';
+
+select name from sys.database_principals where type_desc =
+'DATABASE_ROLE';
+
+
+select
+ dp.class_desc as 'Tipo de objeto',
+ object_name(dp.major_id) as 'Nombre del objeto',
+ user_name(dp.grantee_principal_id) as 'Usuario o rol',
+ dp.permission_name AS 'Permiso',
+ dp.state_desc AS 'Estado del permiso'
+from sys.database_permissions dp
+where user_name(dp.grantee_principal_id) =
+'nombre_de_usuario_o_rol';
