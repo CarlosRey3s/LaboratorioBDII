@@ -22,10 +22,16 @@ CREATE TABLE Distritos (
 CREATE TABLE Direcciones(
 	ID_Direccion INT PRIMARY KEY IDENTITY(1,1),
 	Linea1 VARCHAR(100) NOT NULL,
-	linea2 VARCHAR(100),
+	linea2 VARCHAR(100),   
 	ID_Distrito VARCHAR(5) NOT NULL,
 	CodigoPostal INT,
 	FOREIGN KEY (ID_Distrito) REFERENCES Distritos (ID_Distrito)
+);
+
+CREATE TABLE TipoEmpleado (
+    ID_TipoEmpleado INT PRIMARY KEY IDENTITY(1, 1),
+    NombreTipoEmpleado VARCHAR(60) NOT NULL,
+    DescripcionTipoEmpleado VARCHAR(200)
 );
 
 CREATE TABLE Empleados (
@@ -35,10 +41,12 @@ CREATE TABLE Empleados (
 	FechaNac DATE NOT NULL, 
     Telefono VARCHAR(10) NOT NULL,
     Correo VARCHAR(100),
-    DUI VARCHAR(60) NOT NULL,
-    ISSS FLOAT NOT NULL,
+    DUI VARCHAR(10) NOT NULL,
+    ISSS INT NOT NULL,
     ID_Direccion INT NOT NULL,
-    FOREIGN KEY (ID_Direccion) REFERENCES Direcciones (ID_Direccion)
+	ID_TipoEmpleado INT NOT NULL,
+    FOREIGN KEY (ID_Direccion) REFERENCES Direcciones (ID_Direccion),
+	FOREIGN KEY (ID_TipoEmpleado) REFERENCES TipoEmpleado (ID_TipoEmpleado)
 );
 CREATE TABLE Clientes (
     ID_Cliente INT PRIMARY KEY IDENTITY(1, 1),
@@ -46,7 +54,7 @@ CREATE TABLE Clientes (
     ApellidoCliente VARCHAR(60) NOT NULL,
     Telefono VARCHAR(10) NOT NULL,
     Correo VARCHAR(100),
-    DUI VARCHAR(60) NOT NULL,
+    DUI VARCHAR(10) NOT NULL,
 	TipoCliente VARCHAR (40) NOT NULL,
 	FechaRegistro DATE NOT NULL, 
     ID_Direccion INT NOT NULL,
@@ -155,4 +163,3 @@ CREATE TABLE AsignacionRolesOpciones (
 	FOREIGN KEY (ID_Rol) REFERENCES Roles (ID_Rol),
 	FOREIGN KEY (ID_Opcion) REFERENCES Opciones (ID_Opcion)
 );
-
